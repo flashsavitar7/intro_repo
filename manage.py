@@ -5,7 +5,7 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/api', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_info():
     
     slack_name = "triumph_edet"
