@@ -40,7 +40,8 @@ def get_info():
     return Response(json_response, content_type='application/json')
 
 def get_current_utc_time():
-    current_time = datetime.datetime.now(pytz.utc)
+    server_timezone = pytz.timezone('Africa/Lagos')
+    current_time = datetime.datetime.now(server_timezone)
     formatted_time = current_time.strftime('%Y-%m-%dT%H:%M:%SZ')
     return formatted_time
 
