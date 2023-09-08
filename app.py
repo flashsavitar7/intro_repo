@@ -20,11 +20,17 @@ def get_info():
 
     response_data = OrderedDict([
         ("slack_name", slack_name),
+
         ("current_day", current_day),
-        ("lagos_time", lagos_time),
+
+        ("utc_time", lagos_time),
+
         ("track", track),
+
         ("github_file_url", github_file_url),
+
         ("github_repo_url", github_repo_url),
+
         ("status_code", 200)
     ])
 
