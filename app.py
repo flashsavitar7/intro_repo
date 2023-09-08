@@ -1,4 +1,5 @@
 from flask import Flask, request, Response
+import pytz
 import datetime
 from collections import OrderedDict
 import json
@@ -11,7 +12,7 @@ def get_info():
     slack_name = "triumph_edet"
     track = "backend"
 
-    lagos_time = get_current_lagos_time()
+    utc_time = get_current_utc_time()
 
     current_day = get_current_day()
 
@@ -23,7 +24,7 @@ def get_info():
 
         ("current_day", current_day),
 
-        ("utc_time", lagos_time),
+        ("utc_time", utc_time),
 
         ("track", track),
 
@@ -38,10 +39,10 @@ def get_info():
 
     return Response(json_response, content_type='application/json')
 
-def get_current_lagos_time():
-    lagos_tz = datetime.timezone(datetime.timedelta(hours=1))
-    current_time = datetime.datetime.now(lagos_tz)
-    return current_time.isoformat()
+def get_current_utc_time():
+    current_time = datetime.datetime.now(pytz.utc)
+    formatted_time = current_time.strftime('%Y-%m-%dT%H:%M:%SZ')
+    return formatted_time
 
 def get_current_day():
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
