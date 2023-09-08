@@ -15,8 +15,8 @@ def get_info():
 
     current_day = get_current_day()
 
-    github_file_url = "https://github.com/username/repo/blob/main/file_name.ext"
-    github_repo_url = "https://github.com/username/repo"
+    github_file_url = "https://github.com/flashsavitar7/intro_repo/blob/main/app.py"
+    github_repo_url = "https://github.com/flashsavitar7/intro_repo"
 
     response_data = OrderedDict([
         ("slack_name", slack_name),
@@ -33,7 +33,7 @@ def get_info():
     return Response(json_response, content_type='application/json')
 
 def get_current_lagos_time():
-    lagos_tz = datetime.timezone(datetime.timedelta(hours=1))  # Lagos is UTC+1
+    lagos_tz = datetime.timezone(datetime.timedelta(hours=1))
     current_time = datetime.datetime.now(lagos_tz)
     return current_time.isoformat()
 
